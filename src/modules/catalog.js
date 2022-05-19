@@ -21,7 +21,6 @@ catalogListItems.addEventListener('click', (e)=>{
     if(e.target.classList.contains('catalog-list')){
         return;
     }
-    console.log(e.target.textContent);
     let text = e.target.textContent;
      getData()
          .then(data => renderGoods(categoryFilter(data, text)));
