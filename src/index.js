@@ -1,6 +1,7 @@
 import cart from './modules/cart';
-import second from "./modules/second";
-// import getData from './modules/getData';
+import load from "./modules/load";
+import search from "./modules/search";
+
 cart();
-second();
-// getData()
+load();
+search();
