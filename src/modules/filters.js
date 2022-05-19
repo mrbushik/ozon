@@ -11,12 +11,8 @@ export const categoryFilter= (goods, value) => {
     })
 }
 export const priceFilter = (goods, minPrice = 0, maxPrice = 1000000) => {
-console.log(minPrice);
-console.log(maxPrice);
     return goods.filter((goodsItem) => {
-        // return false;
 
-        return goodsItem.price > minPrice
-         && goodsItem.price < maxPrice;
+        return goodsItem.price > minPrice && goodsItem.price < maxPrice;
     })
 }
