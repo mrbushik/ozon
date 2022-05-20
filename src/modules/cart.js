@@ -7,7 +7,7 @@ const cart = () => {
    
     const openCart = () => {
         const cart = localStorage.getItem('cart') ?
-            JSON.parse(localStorage.getItem('goods')) :
+            JSON.parse(localStorage.getItem('cart')) :
             [];
         
         cartModal.style.display = 'flex';
@@ -18,20 +18,19 @@ const cart = () => {
 
     cartBtn.addEventListener('click', openCart);
     cartCloseBtn.addEventListener('click', closeCart);
+    
     goodsWraper.addEventListener('click', (e)=>{
         if(e.target.classList.contains('btn-primary')){
     const card = e.target.closest('.card')
     const key = card.dataset.key;
     const goods = JSON.parse(localStorage.getItem('goods'));
-    const cart = localStorage.getItem('cart')
- ? JSON.parse(localStorage.getItem('goods'))
- : [];const 
- 
- goodItem = goods.find(item => item.id === +key);
- 
- cart.push(goodItem);
+    const cart = localStorage.getItem('cart')?
+     JSON.parse(localStorage.getItem('cart')) : []
 
- localStorage.setItem('cart', JSON.stringify(cart));
+     const  goodItem = goods.find(item => item.id === +key);
+    cart.push(goodItem);
+
+    localStorage.setItem('cart', JSON.stringify(cart));
         }
     });
 };

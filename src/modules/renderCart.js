@@ -1,6 +1,5 @@
 const renderCart = (goods)=>{
-const cartWraper = document.querySelector('.cart-wraper');
-
+const cartWraper = document.querySelector('.cart-wrapper');
 
 cartWraper.innerHTML = '';
 goods.forEach((item)=>{
