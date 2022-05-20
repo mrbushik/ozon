@@ -4,8 +4,10 @@ const cart = () => {
     const cartModal = document.querySelector('.cart');
     const cartCloseBtn = cartModal.querySelector('.cart-close');
     const goodsWraper = document.querySelector('.goods')
+   const cartTotal = document.querySelector('.cart-total > span')
+   console.log(cartTotal);
    
-    const openCart = () => {
+   const openCart = () => {
         const cart = localStorage.getItem('cart') ?
             JSON.parse(localStorage.getItem('cart')) :
             [];
@@ -13,7 +15,11 @@ const cart = () => {
         cartModal.style.display = 'flex';
 
         renderCart(cart)
+        cartTotal.textContent = cart.reduce((sum, item)=>{
+return sum + item.price;
+        }, 0);
     }
+    
     const closeCart = () => cartModal.style.display = "none";
 
     cartBtn.addEventListener('click', openCart);
@@ -27,7 +33,7 @@ const cart = () => {
     const cart = localStorage.getItem('cart')?
      JSON.parse(localStorage.getItem('cart')) : []
 
-     const  goodItem = goods.find(item => item.id === +key);
+    const  goodItem = goods.find(item => item.id === +key);
     cart.push(goodItem);
 
     localStorage.setItem('cart', JSON.stringify(cart));
