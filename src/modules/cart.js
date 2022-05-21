@@ -1,4 +1,5 @@
 import renderCart from "./renderCart";
+import postData from "./postData";
 const cart = () => {
     const cartBtn = document.getElementById('cart');
     const cartModal = document.querySelector('.cart');
@@ -6,6 +7,7 @@ const cart = () => {
     const goodsWraper = document.querySelector('.goods')
    const cartTotal = document.querySelector('.cart-total > span');
    const cartWraper = document.querySelector('.cart-wrapper');
+   const cartSendBtn = cartModal.querySelector('.cart-confirm');
    
    const openCart = () => {
         const cart = localStorage.getItem('cart') ?
@@ -58,6 +60,16 @@ return sum + item.price;
            return sum + item.price;
        }, 0);
         }
+    });
+
+    cartSendBtn.addEventListener('click', ()=>{
+     const cart = localStorage.getItem('cart') ?
+        JSON.parse(localStorage.getItem('cart')) : [];
+        postData(cart).then(()=>{
+            localStorage.removeItem('cart')
+            renderCart([]);
+        });
+         cartTotal.textContent = 0;
     })
 };
 export default cart;
