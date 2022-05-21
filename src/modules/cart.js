@@ -8,6 +8,7 @@ const cart = () => {
    const cartTotal = document.querySelector('.cart-total > span');
    const cartWraper = document.querySelector('.cart-wrapper');
    const cartSendBtn = cartModal.querySelector('.cart-confirm');
+   const itemsCounter = document.querySelector('.counter')
    
    const openCart = () => {
         const cart = localStorage.getItem('cart') ?
@@ -35,6 +36,8 @@ return sum + item.price;
     const cart = localStorage.getItem('cart')?
      JSON.parse(localStorage.getItem('cart')) : []
 
+     itemsCounter.textContent = cart.length +1;    
+
     const  goodItem = goods.find(item => item.id === +key);
     cart.push(goodItem);
 
@@ -52,6 +55,8 @@ return sum + item.price;
     
     cart.splice(index, 1);
     
+     itemsCounter.textContent = cart.length;
+
     localStorage.setItem('cart', JSON.stringify(cart));
 
     renderCart(cart);
@@ -70,6 +75,8 @@ return sum + item.price;
             renderCart([]);
         });
          cartTotal.textContent = 0;
+     itemsCounter.textContent = 0;
+
     })
 };
 export default cart;
