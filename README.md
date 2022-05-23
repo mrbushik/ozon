@@ -1,6 +1,6 @@
 # To install this application
 
-Вownload the repository and open on localhost
+Download the repository and open on localhost
 
  # Open with Git pages
 
